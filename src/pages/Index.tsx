@@ -10,22 +10,19 @@ import bgVideo from "@/assets/bg-video.mp4";
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-background">
-      {/* Fixed background video with filters — hidden for reduced-motion users */}
+      {/* Fixed background video with filters */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="fixed inset-0 w-full h-full object-cover -z-10 motion-reduce:hidden"
+        className="fixed inset-0 w-full h-full object-cover z-0"
         style={{
           filter: 'brightness(0.45) saturate(0.7) contrast(0.85) blur(1.5px)',
         }}
       >
         <source src={bgVideo} type="video/mp4" />
       </video>
-
-      {/* Dark fallback for when video is hidden or loading */}
-      <div className="fixed inset-0 -z-20 bg-background" />
 
       {/* Ambient vignette glow on edges */}
       <div
