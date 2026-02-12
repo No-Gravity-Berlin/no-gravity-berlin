@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-metallic">
       {/* Ambient glow effects */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-neon-purple/5 blur-[120px]" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-neon-green/5 blur-[100px]" />
