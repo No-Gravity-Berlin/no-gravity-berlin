@@ -1,8 +1,10 @@
-# No Gravity Berlin
+# [No Gravity Berlin Website](https://no-gravity-berlin.github.io/no-gravity-berlin/)
 
-## 📋 Projektübersicht
+[![Deploy to GitHub Pages](https://github.com/No-Gravity-Berlin/no-gravity-berlin/actions/workflows/deploy.yml/badge.svg)](https://github.com/No-Gravity-Berlin/no-gravity-berlin/actions/workflows/deploy.yml)
 
-No Gravity Berlin ist eine Single-Page-Application (SPA), die eine moderne und interaktive Präsenz für die No Gravity Berlin bietet. 
+## 📋 Project Overview
+
+No Gravity Berlin is a single-page application (SPA) that provides a modern and interactive presence for No Gravity Berlin.
 
 - **Navbar**
 - **Hero Section**
@@ -14,56 +16,56 @@ No Gravity Berlin ist eine Single-Page-Application (SPA), die eine moderne und i
 
 ## ⚙️ Tech Stack
 
-- **React 18** + **TypeScript** + **Vite** - Modernes Frontend-Framework
-- **Tailwind CSS** + **shadcn/ui** - Styling und UI-Komponenten
-- **React Router** - Client-seitiges Routing
-- **TanStack Query** - Server State Management
+- **React 18** + **TypeScript** + **Vite** - Modern frontend framework
+- **Tailwind CSS** + **shadcn/ui** - Styling and UI components
+- **React Router** - Client-side routing
+- **TanStack Query** - Server state management
 - **Vitest** - Testing
-- **ESLint** - Code Quality
+- **ESLint** - Code quality
 
 ## 🛠️ Installation
 
-### Voraussetzungen
-- **Node.js** (v18 oder höher)
-- **npm** als Package Manager
+### Requirements
+- **Node.js** (v18 or higher)
+- **npm** as package manager
 
 ### Installation
 
 ```bash
-# Dependencies installieren
+# Install dependencies
 npm install
 
-# Development Server starten
+# Start development server
 npm run dev
 ```
 
-Der Development Server läuft standardmäßig auf `http://localhost:5173`
+The development server runs by default on `http://localhost:5173`
 
 ## 📜 Available Scripts
 
 ```bash
-# Development Server mit Hot Reload
+# Development server with hot reload
 npm run dev
 
-# Production Build erstellen
+# Create production build
 npm run build
 
-# Development Build erstellen
+# Create development build
 npm run build:dev
 
-# Production Build lokal testen
+# Preview production build locally
 npm run preview
 
 # Linting
 npm run lint
 
-# Tests ausführen
+# Run tests
 npm run test
 
-# Tests im Watch-Modus
+# Run tests in watch mode
 npm run test:watch
 ```
-##  Projektstruktur
+## 📁 Project Structure
 
 ```
 no-gravity-berlin/
@@ -106,32 +108,34 @@ no-gravity-berlin/
 
 ## 🚀 Deployment
 
-Das Projekt wird automatisch über GitHub Actions und GitHub Pages deployed:
-- **Trigger / Source**: Branch `main`
+The project is automatically deployed via GitHub Actions and GitHub Pages:
+- **Trigger / Source**: `main` branch
 - **Configuration:** `.github/workflows/deploy.yml`
-- **Build-Prozess**: `npm run build`
+- **Build process**: `npm run build`
 
 **URL**: [https://no-gravity-berlin.github.io/no-gravity-berlin/](https://no-gravity-berlin.github.io/no-gravity-berlin/)
  
 
-## 🔧 Konfiguration
+## 🔧 Configuration
 
-- **vite.config.ts**: Bundler- und Dev-Server-Einstellungen
-- **vitest.config.ts**: Test-Framework-Konfiguration
-- **tsconfig.json**: TypeScript Basis-Konfiguration
-- **tsconfig.app.json**: TypeScript für App-Quellcode
-- **tsconfig.node.json**: TypeScript für Build-Tools
-- **tailwind.config.ts**: Tailwind CSS Theme und Plugins
-- **postcss.config.js**: CSS-Verarbeitung (für Tailwind)
-- **eslint.config.js**: Code-Qualitäts-Regeln
-- **components.json**: shadcn/ui Komponenten
+- **vite.config.ts**: Bundler and dev server settings
+- **vitest.config.ts**: Test framework configuration
+- **tsconfig.json**: TypeScript base configuration
+- **tsconfig.app.json**: TypeScript config for app source
+- **tsconfig.node.json**: TypeScript config for build tools
+- **tailwind.config.ts**: Tailwind CSS theme and plugins
+- **postcss.config.js**: CSS processing (for Tailwind)
+- **eslint.config.js**: Code quality rules
+- **components.json**: shadcn/ui components
 
 ### GitHub Codespaces
 
-## 📝 Lizenz
+## 📝 License
 
-Dieses Projekt ist privat und nicht für öffentliche Nutzung bestimmt.
+No license. All rights reserved.
 
-## 📧 Kontakt
+## 📧 Contact
 
-Für Fragen oder Anregungen kontaktiere das No Gravity Berlin Team.
+For questions or suggestions, contact the No Gravity Berlin team:
+no.gravity.bln@gmail.com
+
