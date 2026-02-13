@@ -1,21 +1,23 @@
-import { motion } from "framer-motion";
-import event1 from "@/assets/event-1.jpg";
-import event2 from "@/assets/event-2.jpg";
-import event3 from "@/assets/event-3.jpg";
-import event4 from "@/assets/event-4.jpg";
-import event5 from "@/assets/event-5.jpg";
-
-const events = [
-  { img: event1, title: "VOID", date: "15.03.2026", span: "col-span-2 row-span-1" },
-  { img: event2, title: "ECLIPSE", date: "28.03.2026", span: "col-span-1 row-span-2" },
-  { img: event3, title: "PULSE", date: "12.04.2026", span: "col-span-1 row-span-1" },
-  { img: event4, title: "ZERO-G", date: "26.04.2026", span: "col-span-2 row-span-1" },
-  { img: event5, title: "DRIFT", date: "10.05.2026", span: "col-span-1 row-span-1" },
-];
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronUp } from "lucide-react";
+import { getPreviewEvents, getUpcomingEvents, getPastEvents } from "@/data/events";
+import EventCard from "./EventCard";
 
 const EventsSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<"upcoming" | "past">("upcoming");
+  const [expandedPreview, setExpandedPreview] = useState<string | null>(null);
+  const [expandedModal, setExpandedModal] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const previewEvents = getPreviewEvents();
+  const upcoming = getUpcomingEvents();
+  const past = getPastEvents();
+  const modalEvents = activeTab === "upcoming" ? upcoming : past;
+
   return (
-    <section id="events" className="py-24 px-6">
+    <section id="events" className="py-24 px-6" ref={sectionRef}>
       <div className="container mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -26,35 +28,149 @@ const EventsSection = () => {
           Events
         </motion.h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[250px]">
-          {events.map((event, i) => (
-            <motion.div
-              key={event.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`relative group overflow-hidden rounded-lg cursor-pointer ${event.span}`}
+        <div className="relative">
+          {/* 2x2 Preview Grid */}
+          <AnimatePresence>
+            {!modalOpen && (
+              <motion.div
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              >
+                {previewEvents.map((event, i) => (
+                  <motion.div
+                    key={event.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="relative"
+                  >
+                    {/* Expanded overlay for grid cards */}
+                    <AnimatePresence>
+                      {expandedPreview === event.id && (
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          className="fixed inset-0 bg-background/60 z-30"
+                          onClick={() => setExpandedPreview(null)}
+                        />
+                      )}
+                    </AnimatePresence>
+
+                    <motion.div
+                      layout
+                      className={
+                        expandedPreview === event.id
+                          ? "relative z-40"
+                          : "relative z-10"
+                      }
+                    >
+                      <EventCard
+                        event={event}
+                        expanded={expandedPreview === event.id}
+                        onToggle={() =>
+                          setExpandedPreview(
+                            expandedPreview === event.id ? null : event.id
+                          )
+                        }
+                        variant="grid"
+                      />
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Expanded Modal */}
+          <AnimatePresence>
+            {modalOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="overflow-hidden rounded-lg glass min-h-[80vh]"
+              >
+                <div className="p-4 md:p-6">
+                  {/* Header with tabs and minimize */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex gap-2">
+                      {(["upcoming", "past"] as const).map((tab) => (
+                        <button
+                          key={tab}
+                          onClick={() => {
+                            setActiveTab(tab);
+                            setExpandedModal(null);
+                          }}
+                          className={`px-4 py-2 rounded-md text-sm font-nasalization tracking-wider transition-all duration-300 ${
+                            activeTab === tab
+                              ? "bg-primary/20 text-primary neon-border-purple"
+                              : "text-muted-foreground hover:text-foreground"
+                          }`}
+                        >
+                          {tab === "upcoming" ? "Upcoming Events" : "Past Events"}
+                        </button>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => setModalOpen(false)}
+                      className="p-2 rounded-md text-muted-foreground hover:text-foreground transition-colors hover:bg-secondary/50"
+                      aria-label="Minimize"
+                    >
+                      <ChevronUp className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  {/* Event list */}
+                  <div className="space-y-4">
+                    {modalEvents.length === 0 && (
+                      <p className="text-center text-muted-foreground py-12 font-nasalization tracking-wider text-sm">
+                        No {activeTab} events
+                      </p>
+                    )}
+                    {modalEvents.map((event, i) => (
+                      <motion.div
+                        key={event.id}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.08 }}
+                      >
+                        <EventCard
+                          event={event}
+                          expanded={expandedModal === event.id}
+                          onToggle={() =>
+                            setExpandedModal(
+                              expandedModal === event.id ? null : event.id
+                            )
+                          }
+                          variant="list"
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Show All Events Button */}
+          <motion.div layout className="flex justify-center mt-8">
+            <motion.button
+              onClick={() => {
+                setModalOpen(!modalOpen);
+                setExpandedPreview(null);
+              }}
+              className="px-8 py-3 rounded-lg font-nasalization text-sm tracking-widest uppercase border border-primary/40 text-primary hover:bg-primary/10 transition-all duration-300 animate-neon-pulse"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <img
-                src={event.img}
-                alt={event.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              {/* Dark overlay */}
-              <div className="absolute inset-0 bg-background/60 transition-all duration-500 group-hover:bg-background/30" />
-              {/* Neon border on hover */}
-              <div className="absolute inset-0 border-2 border-transparent transition-all duration-500 group-hover:neon-border-green rounded-lg" />
-              {/* Text */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                <h3 className="font-nasalization text-lg md:text-2xl tracking-wider text-foreground">
-                  {event.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mt-1">{event.date}</p>
-              </div>
-            </motion.div>
-          ))}
+              {modalOpen ? "Minimize Events" : "Show All Events"}
+            </motion.button>
+          </motion.div>
         </div>
       </div>
     </section>
