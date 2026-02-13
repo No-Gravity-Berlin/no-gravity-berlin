@@ -1,73 +1,137 @@
-# Welcome to your Lovable project
+# No Gravity Berlin
 
-## Project info
+## 📋 Projektübersicht
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+No Gravity Berlin ist eine Single-Page-Application (SPA), die eine moderne und interaktive Präsenz für die No Gravity Berlin bietet. 
 
-## How can I edit this code?
+- **Navbar**
+- **Hero Section**
+- **Events Section**
+- **About Section**
+- **Team Section**
+- **Verein Section**
+- **Footer**
 
-There are several ways of editing your application.
+## ⚙️ Tech Stack
 
-**Use Lovable**
+- **React 18** + **TypeScript** + **Vite** - Modernes Frontend-Framework
+- **Tailwind CSS** + **shadcn/ui** - Styling und UI-Komponenten
+- **React Router** - Client-seitiges Routing
+- **TanStack Query** - Server State Management
+- **Vitest** - Testing
+- **ESLint** - Code Quality
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🛠️ Installation
 
-Changes made via Lovable will be committed automatically to this repo.
+### Voraussetzungen
+- **Node.js** (v18 oder höher)
+- **npm** als Package Manager
 
-**Use your preferred IDE**
+### Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+# Dependencies installieren
+npm install
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Development Server starten
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Der Development Server läuft standardmäßig auf `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📜 Available Scripts
 
-**Use GitHub Codespaces**
+```bash
+# Development Server mit Hot Reload
+npm run dev
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Production Build erstellen
+npm run build
 
-## What technologies are used for this project?
+# Development Build erstellen
+npm run build:dev
 
-This project is built with:
+# Production Build lokal testen
+npm run preview
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Linting
+npm run lint
 
-## How can I deploy this project?
+# Tests ausführen
+npm run test
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+# Tests im Watch-Modus
+npm run test:watch
+```
+##  Projektstruktur
 
-## Can I connect a custom domain to my Lovable project?
+```
+no-gravity-berlin/
+├── public/
+│   ├── fonts/
+│   └── robots.txt
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── ui/
+│   │   ├── AboutSection.tsx
+│   │   ├── EventCard.tsx
+│   │   ├── EventsSection.tsx
+│   │   ├── FooterSection.tsx
+│   │   ├── HeroSection.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── TeamSection.tsx
+│   │   └── VereinSection.tsx
+│   ├── data/
+│   │   └── events/
+│   ├── hooks/
+│   ├── lib/
+│   ├── pages/
+│   │   ├── Index.tsx
+│   │   └── NotFound.tsx
+│   ├── test/
+│   ├── App.tsx
+│   └── main.tsx
+├── vite.config.ts
+├── vitest.config.ts
+├── tsconfig.json
+├── tsconfig.app.json
+├── tsconfig.node.json
+├── tailwind.config.ts
+├── postcss.config.js
+├── eslint.config.js
+├── components.json
+└── package.json
+```
 
-Yes, you can!
+## 🚀 Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Das Projekt wird automatisch über GitHub Actions und GitHub Pages deployed:
+- **Trigger / Source**: Branch `main`
+- **Configuration:** `.github/workflows/deploy.yml`
+- **Build-Prozess**: `npm run build`
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**URL**: `https://<username>.github.io/<repository-name>` 
+ 
+
+## 🔧 Konfiguration
+
+- **vite.config.ts**: Bundler- und Dev-Server-Einstellungen
+- **vitest.config.ts**: Test-Framework-Konfiguration
+- **tsconfig.json**: TypeScript Basis-Konfiguration
+- **tsconfig.app.json**: TypeScript für App-Quellcode
+- **tsconfig.node.json**: TypeScript für Build-Tools
+- **tailwind.config.ts**: Tailwind CSS Theme und Plugins
+- **postcss.config.js**: CSS-Verarbeitung (für Tailwind)
+- **eslint.config.js**: Code-Qualitäts-Regeln
+- **components.json**: shadcn/ui Komponenten
+
+### GitHub Codespaces
+
+## 📝 Lizenz
+
+Dieses Projekt ist privat und nicht für öffentliche Nutzung bestimmt.
+
+## 📧 Kontakt
+
+Für Fragen oder Anregungen kontaktiere das No Gravity Berlin Team.
