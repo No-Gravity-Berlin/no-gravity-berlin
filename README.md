@@ -9,6 +9,7 @@ No Gravity Berlin is a single-page application (SPA) that provides a modern and 
 - **Navbar**
 - **Hero Section**
 - **Events Section**
+- **Showcase Section**
 - **About Section**
 - **Team Section**
 - **Verein Section**
