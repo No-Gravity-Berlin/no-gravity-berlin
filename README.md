@@ -111,7 +111,7 @@ Das Projekt wird automatisch über GitHub Actions und GitHub Pages deployed:
 - **Configuration:** `.github/workflows/deploy.yml`
 - **Build-Prozess**: `npm run build`
 
-**URL**: `https://<username>.github.io/<repository-name>` 
+**URL**: [https://no-gravity-berlin.github.io/no-gravity-berlin/](https://no-gravity-berlin.github.io/no-gravity-berlin/)
  
 
 ## 🔧 Konfiguration
