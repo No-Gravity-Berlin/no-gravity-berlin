@@ -164,7 +164,7 @@ const EventsSection = () => {
                 setModalOpen(!modalOpen);
                 setExpandedPreview(null);
               }}
-              className="px-8 py-3 rounded-lg font-nasalization text-sm tracking-widest uppercase border border-primary/40 text-primary hover:bg-primary/10 transition-all duration-300 animate-neon-pulse"
+              className="px-8 py-3 border border-neon-purple/40 bg-neon-purple/10 text-foreground font-nasalization text-sm tracking-widest uppercase hover:bg-neon-purple/20 transition-all duration-300 rounded-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >

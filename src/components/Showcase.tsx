@@ -70,7 +70,7 @@ const Showcase = () => {
         <h2 className="text-4xl md:text-5xl font-nasalization text-center mb-8 text-glow-purple">
           Showcase
         </h2>
-        <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12">
+        <p className="text-center text-foreground/85 max-w-2xl mx-auto mb-12 text-lg md:text-xl font-nasalization italic">
           Listen to the full No Gravity Berlin podcast playlist directly here.
         </p>
 

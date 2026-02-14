@@ -14,20 +14,29 @@ const AboutSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-nasalization mb-8 text-glow-green">
+          <h2 className="text-4xl md:text-5xl font-nasalization mb-8 text-glow-purple">
             About
           </h2>
 
-          <div className="w-16 h-px bg-neon-green/40 mx-auto mb-10" />
+          <div
+            className="w-20 h-px mx-auto mb-10 relative bg-foreground"
+            style={{ boxShadow: '0 0 6px 1.5px #a855f7, 0 0 1px 0 #a855f7' }}
+          />
 
-          <p className="text-xl md:text-2xl text-foreground leading-relaxed mb-8">
-            A platform for young, intercultural, and neurodiverse artists pushing the boundaries of electronic music.
+          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-12 max-w-2xl mx-auto">
+            <>
+              We are a platform for young, intercultural, and neurodiverse artists to develop their talents and collectively push the boundaries of electronic music as an universal language that connects cultures and generations.
+            </>
           </p>
 
-          <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Born in Berlin's underground, No Gravity creates spaces where sound transcends gravity.
-            We champion emerging talent, foster community across cultures, and believe electronic music
-            is a universal language that connects us all.
+          <h3 className="text-2xl md:text-3xl font-nasalization mb-6 text-glow-purple">
+            The Vision
+          </h3>
+
+          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-2xl mx-auto">
+            <>
+              We respect everything — except the law of gravity! <br /> Defy the norm, and feel like you're floating on sound. <br /> We combine innovative electronic sounds, astral visuals,<br /> and creative freedom.
+            </>
           </p>
         </motion.div>
       </div>

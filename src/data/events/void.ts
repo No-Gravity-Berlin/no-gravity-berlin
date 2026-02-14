@@ -1,4 +1,4 @@
-import event1 from "@/assets/event-1.jpg";
+import event1 from "@/assets/events/event-1.jpg";
 import type { EventData } from "@/data/events/types";
 
 const event: EventData = {

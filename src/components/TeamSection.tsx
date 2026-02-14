@@ -10,20 +10,21 @@ interface Member {
 }
 
 const teamMembers: Member[] = [
-  { name: "Alex K.", role: "Founder", bio: "Visionary behind No Gravity Berlin. Pushing the boundaries of underground electronic music culture since day one.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }] },
-  { name: "Mira S.", role: "Creative Director", bio: "Shaping the visual identity and artistic direction of every No Gravity experience.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }] },
-  { name: "Jonas R.", role: "A&R", bio: "Curating lineups and discovering fresh talent across the electronic music spectrum.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }, { label: "SoundCloud", url: "#", icon: "soundcloud" }] },
-  { name: "Leyla M.", role: "Events Lead", bio: "Orchestrating immersive events from concept to execution with precision.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }] },
-  { name: "Tomás V.", role: "Community", bio: "Building and nurturing the No Gravity community across Berlin and beyond.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }] },
+  { name: "Ayen", role: "Founder", bio: "Visionary behind No Gravity Berlin. Pushing the boundaries of underground electronic music culture since day one.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }] },
+  { name: "Marvin", role: "Finances", bio: "Shaping the visual identity and artistic direction of every No Gravity experience.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }] },
+  { name: "FknSil", role: "", bio: "Curating lineups and discovering fresh talent across the electronic music spectrum.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }, { label: "SoundCloud", url: "#", icon: "soundcloud" }] },
+  { name: "Molly on Molly", role: "Events Lead", bio: "Orchestrating immersive events from concept to execution with precision.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }] },
+  { name: "Salchikiller", role: "Community", bio: "Building and nurturing the No Gravity community across Berlin and beyond.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }] },
+   { name: "Salchikiller", role: "Community", bio: "Building and nurturing the No Gravity community across Berlin and beyond.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }] },
 ];
 
-const residents: Member[] = [
-  { name: "NØIR", role: "Resident DJ", bio: "Deep, hypnotic techno journeys through shadow and sound.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }, { label: "SoundCloud", url: "#", icon: "soundcloud" }] },
-  { name: "SYNKRO", role: "Resident DJ", bio: "Atmospheric bass music exploring the spaces between genres.", socials: [{ label: "SoundCloud", url: "#", icon: "soundcloud" }] },
-  { name: "ECHØ", role: "Live Act", bio: "Hardware-driven live sets channeling raw industrial energy.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }, { label: "Web", url: "#", icon: "web" }] },
-  { name: "PHAZE", role: "Resident DJ", bio: "High-energy selections spanning acid, electro, and hard techno.", socials: [{ label: "SoundCloud", url: "#", icon: "soundcloud" }] },
-  { name: "VØLT", role: "Live Act", bio: "Modular synthesis performances that blur the line between noise and melody.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }, { label: "SoundCloud", url: "#", icon: "soundcloud" }] },
-];
+// const residents: Member[] = [
+//   { name: "NØIR", role: "Resident DJ", bio: "Deep, hypnotic techno journeys through shadow and sound.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }, { label: "SoundCloud", url: "#", icon: "soundcloud" }] },
+//   { name: "SYNKRO", role: "Resident DJ", bio: "Atmospheric bass music exploring the spaces between genres.", socials: [{ label: "SoundCloud", url: "#", icon: "soundcloud" }] },
+//   { name: "ECHØ", role: "Live Act", bio: "Hardware-driven live sets channeling raw industrial energy.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }, { label: "Web", url: "#", icon: "web" }] },
+//   { name: "PHAZE", role: "Resident DJ", bio: "High-energy selections spanning acid, electro, and hard techno.", socials: [{ label: "SoundCloud", url: "#", icon: "soundcloud" }] },
+//   { name: "VØLT", role: "Live Act", bio: "Modular synthesis performances that blur the line between noise and melody.", socials: [{ label: "Instagram", url: "#", icon: "instagram" }, { label: "SoundCloud", url: "#", icon: "soundcloud" }] },
+// ];
 
 const socialIcon = (type: "instagram" | "soundcloud" | "web") => {
   switch (type) {
@@ -55,14 +56,14 @@ const MemberCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="flex flex-col items-center gap-3 relative"
+      className="flex flex-col items-center gap-2 relative"
       style={{ zIndex: isExpanded ? 50 : 1 }}
     >
       {/* Circle avatar */}
       <motion.div
         layout
         onClick={onToggle}
-        className={`w-24 h-24 md:w-32 md:h-32 rounded-full bg-secondary flex items-center justify-center cursor-pointer relative ${glowClass}`}
+        className={`w-28 h-28 md:w-36 md:h-36 rounded-full bg-secondary flex items-center justify-center cursor-pointer relative ${glowClass}`}
         animate={isExpanded ? { scale: 1.3 } : { scale: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         style={{ zIndex: isExpanded ? 52 : 2 }}
@@ -149,8 +150,9 @@ const MemberRow = ({
 }) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
+  // 3 items per row, 2 rows for 5 items
   return (
-    <div className="flex flex-wrap justify-center gap-8 md:gap-12 relative" style={{ minHeight: 180 }}>
+    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-1 gap-y-10 justify-center">
       {members.map((m, i) => (
         <MemberCard
           key={m.name}
@@ -167,35 +169,19 @@ const MemberRow = ({
 
 const TeamSection = () => {
   return (
-    <>
-      <section id="team" className="py-24 px-6">
-        <div className="container mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-nasalization text-center mb-16 text-glow-purple"
-          >
-            Team
-          </motion.h2>
-          <MemberRow members={teamMembers} glowClass="glow-purple" />
-        </div>
-      </section>
-
-      <section id="residents" className="py-24 px-6">
-        <div className="container mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-nasalization text-center mb-16 text-glow-green"
-          >
-            Residents
-          </motion.h2>
-          <MemberRow members={residents} glowClass="glow-green" />
-        </div>
-      </section>
-    </>
+    <section id="team" className="py-24 px-6">
+      <div className="container mx-auto">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-nasalization text-center mb-16 text-glow-purple"
+        >
+          Team
+        </motion.h2>
+        <MemberRow members={teamMembers} glowClass="glow-purple" />
+      </div>
+    </section>
   );
 };
 

@@ -7,9 +7,9 @@ const tabs = [
     label: "Info",
     content: (
       <>
-        <h3 className="font-nasalization text-xl mb-4 text-foreground">No Gravity e.V.</h3>
+        <h3 className="font-nasalization text-xl mb-4 text-foreground">No Gravity Berlin e.V.i.G.</h3>
         <p className="text-muted-foreground leading-relaxed mb-4">
-          No Gravity e.V. is a registered non-profit association (eingetragener Verein) based in Berlin,
+          No Gravity Berlin e.V.i.G. is a registered non-profit association (eingetragener Verein in Gründung) based in Berlin,
           dedicated to promoting intercultural exchange and neurodiversity through electronic music and the arts.
         </p>
         <p className="text-muted-foreground leading-relaxed">
