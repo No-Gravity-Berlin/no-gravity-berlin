@@ -6,7 +6,8 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   // Use '/no-gravity-berlin/' for GitHub Pages, '/' for lovable.dev and local
-  const isGhPages = process.env.DEPLOY_ENV === 'ghpages';
+  // Detect GitHub Pages by checking for GITHUB_PAGES env or fallback to production mode
+  const isGhPages = process.env.GITHUB_PAGES === 'true' || process.env.NODE_ENV === 'production';
   return {
     base: isGhPages ? '/no-gravity-berlin/' : '/',
     server: {
