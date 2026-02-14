@@ -6,6 +6,7 @@ const Showcase = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [origin, setOrigin] = useState("");
 
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setOrigin(window.location.origin);
@@ -74,10 +75,16 @@ const Showcase = () => {
           Listen to the full No Gravity Berlin podcast playlist directly here.
         </p>
 
-        <div className="w-full md:w-[70%] mx-auto aspect-video rounded-2xl overflow-hidden">
+        <div
+          className="w-full md:w-[70%] mx-auto aspect-video rounded-2xl overflow-hidden relative"
+          style={{
+            boxShadow: '0px 0px 15px 4px #a259ff18',     
+            transition: 'box-shadow 0.7s',
+          }}
+        >
           <iframe
             ref={playerRef}
-            className={`w-full h-full transition-all duration-700 ${
+            className={`w-full h-full transition-all duration-700 relative z-10 ${
               isPlaying ? "filter-none" : "filter brightness-50 saturate-50"
             }`}
             src={`https://www.youtube.com/embed?listType=playlist&list=PLTl7JxentpQJjnDcSaxm1nfeT5ORLoMUS&enablejsapi=1${

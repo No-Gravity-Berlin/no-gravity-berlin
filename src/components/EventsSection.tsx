@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp } from "lucide-react";
 import { getPreviewEvents, getUpcomingEvents, getPastEvents } from "@/data/events";
@@ -6,6 +6,8 @@ import EventCard from "./EventCard";
 
 const EventsSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
+
+  // Removed autoscroll on modal opening
   const [activeTab, setActiveTab] = useState<"upcoming" | "past">("upcoming");
   const [expandedPreview, setExpandedPreview] = useState<string | null>(null);
   const [expandedModal, setExpandedModal] = useState<string | null>(null);
@@ -27,7 +29,6 @@ const EventsSection = () => {
         >
           Events
         </motion.h2>
-
         <div className="relative">
           {/* 2x2 Preview Grid */}
           <AnimatePresence>
@@ -36,7 +37,7 @@ const EventsSection = () => {
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-5xl mx-auto"
               >
                 {previewEvents.map((event, i) => (
                   <motion.div
@@ -59,7 +60,6 @@ const EventsSection = () => {
                         />
                       )}
                     </AnimatePresence>
-
                     <motion.div
                       layout
                       className={
@@ -84,16 +84,16 @@ const EventsSection = () => {
               </motion.div>
             )}
           </AnimatePresence>
-
           {/* Expanded Modal */}
           <AnimatePresence>
             {modalOpen && (
               <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="overflow-hidden rounded-lg glass min-h-[80vh]"
+                initial={{ opacity: 0, scaleY: 0.85, y: 40 }}
+                animate={{ opacity: 1, scaleY: 1, y: 0 }}
+                exit={{ opacity: 0, scaleY: 0.85, y: 40 }}
+                transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
+                style={{ originY: 0.1 }}
+                className="overflow-hidden rounded-lg glass min-h-[80vh] max-w-[60rem] mx-auto"
               >
                 <div className="p-4 md:p-6">
                   {/* Header with tabs and minimize */}
@@ -124,7 +124,6 @@ const EventsSection = () => {
                       <ChevronUp className="w-5 h-5" />
                     </button>
                   </div>
-
                   {/* Event list */}
                   <div className="space-y-4">
                     {modalEvents.length === 0 && (
@@ -156,7 +155,6 @@ const EventsSection = () => {
               </motion.div>
             )}
           </AnimatePresence>
-
           {/* Show All Events Button */}
           <motion.div layout className="flex justify-center mt-8">
             <motion.button

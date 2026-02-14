@@ -26,11 +26,11 @@ const FooterSection = () => {
     <footer className="border-t border-border/30 py-12 px-6 bg-[rgba(12,10,18,0.95)]">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
-          <span className="font-nasalization text-sm tracking-widest text-muted-foreground text-center md:text-left">
-            © {new Date().getFullYear()} No Gravity Berlin e.V.
+          <span className="font-nasalization text-sm tracking-widest text-muted-foreground text-center md:text-left uppercase">
+            <span className="font-sans font-bold not-italic mr-1 text-xl align-middle">©</span> {new Date().getFullYear()} No Gravity Berlin e.V.
           </span>
 
-          <div className="flex justify-center gap-4">
+          <div className="flex items-center justify-center gap-3">
             {socials.map((s) => (
               <a
                 key={s.label}
@@ -38,18 +38,24 @@ const FooterSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="w-10 h-10 rounded-full border border-neon-purple/40 bg-neon-purple/10 text-foreground hover:border-neon-purple/70 hover:bg-neon-purple/20 transition-all duration-300 flex items-center justify-center"
+                className="w-8 h-8 rounded-full border border-zinc-900 bg-zinc-900 text-foreground hover:border-zinc-800 hover:bg-zinc-800 hover:ring-1 hover:ring-[#6d28d9] transition-all duration-300 flex items-center justify-center"
               >
                 <s.icon className="w-5 h-5" />
               </a>
             ))}
           </div>
 
-          <div className="flex justify-center md:justify-end gap-8">
-            <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider">
+          <div className="flex items-center justify-center md:justify-end gap-8">
+            <a
+              href="#"
+              className="text-sm tracking-wider text-foreground font-nasalization hover:text-neon-purple hover:text-glow-purple transition-colors duration-300 uppercase"
+            >
               Impressum
             </a>
-            <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider">
+            <a
+              href="#"
+              className="text-sm tracking-wider text-foreground font-nasalization hover:text-neon-purple hover:text-glow-purple transition-colors duration-300 uppercase"
+            >
               Datenschutzerklärung
             </a>
           </div>
