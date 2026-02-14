@@ -85,7 +85,7 @@ const Showcase = () => {
           <iframe
             ref={playerRef}
             className={`w-full h-full transition-all duration-700 relative z-10 ${
-              isPlaying ? "filter-none" : "filter brightness-50 saturate-50"
+              isPlaying ? "filter-none" : "filter brightness-[0.85] saturate-[0.85]"
             }`}
             src={`https://www.youtube.com/embed?listType=playlist&list=PLTl7JxentpQJjnDcSaxm1nfeT5ORLoMUS&enablejsapi=1${
               origin ? `&origin=${encodeURIComponent(origin)}` : ""
